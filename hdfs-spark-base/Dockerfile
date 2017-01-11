@@ -44,6 +44,7 @@ RUN tar xzf hadoop-$HADOOP_VERSION.tar.gz
 RUN mkdir hadoop-$HADOOP_VERSION/logs
 RUN chown -R root:root hadoop-$HADOOP_VERSION
 RUN ln -s hadoop-$HADOOP_VERSION hadoop
+RUN rm hadoop-$HADOOP_VERSION.tar.gz
 
 ENV HADOOP_PREFIX /hadoop
 ENV HADOOP_COMMON_HOME /hadoop
@@ -65,6 +66,7 @@ RUN echo "${SPARK_MASTER_SERVICE_HOST} spark-master" >> /etc/hosts
 RUN wget http://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
 RUN tar xzf spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
 RUN ln -s spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR $SPARK_DIR
+RUN rm spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
 
 EXPOSE 8080 4040 7077 7078
 
@@ -73,6 +75,9 @@ RUN touch spark-env.sh
 RUN touch spark-defaults.conf
 RUN echo SPARK_WORKER_PORT=7078 >> spark-env.sh
 RUN echo spark.master spark://spark-master:7077 >> spark-defaults.conf
+RUN sed -i 's/log4j.rootCategory=.*/log4j.rootCategory=WARN, console/' log4j.properties
+
+ENV PATH $PATH:$HADOOP_COMMON_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin
 
 WORKDIR /
 RUN mkdir data
