@@ -63,8 +63,6 @@ ENV SPARK_DIR spark
 ENV SPARK_HOME /$SPARK_DIR
 RUN echo "${SPARK_MASTER_SERVICE_HOST} spark-master" >> /etc/hosts
 RUN wget http://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
-
-WORKDIR $SPARK_HOME
 RUN tar xzf spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
 RUN ln -s spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR $SPARK_DIR
 
