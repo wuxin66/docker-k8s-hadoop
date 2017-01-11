@@ -58,7 +58,7 @@ ADD core-site.xml /hadoop/etc/hadoop/.
 ADD hdfs-site.xml /hadoop/etc/hadoop/.
 
 # SPARK
-ENV SPARK_VERSION 2.0.2
+ENV SPARK_VERSION 2.1.0
 ENV HADOOP_MAJOR 2.7
 ENV SPARK_DIR spark
 ENV SPARK_HOME /$SPARK_DIR

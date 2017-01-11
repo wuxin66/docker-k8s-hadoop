@@ -1,3 +1,3 @@
-# caci-hadoop
+# Dockerfiles for K8S and Docker Compose configuration
 
-Dockerfiles for K8S configuration
+This repo allows you to build local HDFS-Spark clusters and containerized Kubernetes clusters
