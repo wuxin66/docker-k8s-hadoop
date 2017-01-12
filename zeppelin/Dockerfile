@@ -10,6 +10,9 @@ WORKDIR /zeppelin
 ENV SPARK_HIVE true
 ENV ZEPPELIN_HOME /zeppelin
 
+RUN apt-get update \
+  && apt-get install -y git 
+
 RUN git clone --depth 1 --branch ${ZEPPELIN_VERSION} https://github.com/apache/zeppelin.git /zeppelin && \
     apt-get update && \
     apt-get install -y maven && \
