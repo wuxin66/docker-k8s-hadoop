@@ -21,5 +21,9 @@ do
   sleep 1
 done
 
+printf "\nStart spark-ui-proxy...\n"
+kubectl create -f spark-ui-controller.yaml
+kubectl create -f spark-ui-proxy-service.yaml
+
 kubectl get pods
 printf "\nCluster deployed!\n"
