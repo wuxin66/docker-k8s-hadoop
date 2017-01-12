@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: zeppelin
-          image: dit4c/dit4c-container-zeppelin
+          image: gcr.io/caci-main/zeppelin:latest
           ports:
             - containerPort: 8080
           resources:
