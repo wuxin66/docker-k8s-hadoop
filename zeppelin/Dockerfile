@@ -13,4 +13,9 @@ ADD zeppelin-env.sh /opt/zeppelin/conf/zeppelin-env.sh
 ADD docker-zeppelin.sh /opt/zeppelin/bin/docker-zeppelin.sh
 
 EXPOSE 8080
-CMD ["/opt/zeppelin/bin/docker-zeppelin.sh"]
+
+ENV ZEPPELIN_HOME=/opt/zeppelin
+ENV ZEPPELIN_CONF_DIR="${ZEPPELIN_HOME}/conf"
+
+WORKDIR $ZEPPELIN_HOME
+CMD ["/opt/zeppelin/bin/docker-zeppelin.sh", "${ZEPPELIN_CONF_DIR}"]
