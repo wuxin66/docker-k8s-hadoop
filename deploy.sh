@@ -4,6 +4,8 @@ kubectl create -f hdfs-spark-master-service.yaml
 kubectl create -f hdfs-spark-master-controller.yaml
 kubectl create -f spark-ui-proxy-controller.yaml
 kubectl create -f spark-ui-proxy-service.yaml
+kubectl create -f zeppelin-controller.yaml
+kubectl create -f zeppelin-service.yaml
 
 kubectl get pods
 while [ $(kubectl get pods | grep spark-master | grep Running | wc -l) -le 0 ]
