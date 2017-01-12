@@ -22,7 +22,7 @@ do
 done
 
 printf "\nStart spark-ui-proxy...\n"
-kubectl create -f spark-ui-controller.yaml
+kubectl create -f spark-ui-proxy-controller.yaml
 kubectl create -f spark-ui-proxy-service.yaml
 
 kubectl get pods
