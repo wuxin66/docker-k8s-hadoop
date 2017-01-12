@@ -13,4 +13,4 @@ ADD zeppelin-env.sh /opt/zeppelin/conf/zeppelin-env.sh
 ADD docker-zeppelin.sh /opt/zeppelin/bin/docker-zeppelin.sh
 
 EXPOSE 8080
-ENTRYPOINT ["/opt/zeppelin/bin/docker-zeppelin.sh"]
+CMD ["/opt/zeppelin/bin/docker-zeppelin.sh"]
