@@ -2,6 +2,8 @@ printf "Deploying K8S cluster...\n"
 printf "Start spark-master...\n"
 kubectl create -f hdfs-spark-master-service.yaml
 kubectl create -f hdfs-spark-master-controller.yaml
+kubectl create -f spark-ui-proxy-controller.yaml
+kubectl create -f spark-ui-proxy-service.yaml
 
 kubectl get pods
 while [ $(kubectl get pods | grep spark-master | grep Running | wc -l) -le 0 ]
@@ -20,10 +22,6 @@ do
   kubectl get pods
   sleep 1
 done
-
-#printf "\nStart spark-ui-proxy...\n"
-#kubectl create -f spark-ui-proxy-controller.yaml
-#kubectl create -f spark-ui-proxy-service.yaml
 
 kubectl get pods
 printf "\nCluster deployed!\n"
