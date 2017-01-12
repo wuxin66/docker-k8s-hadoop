@@ -1,9 +1,9 @@
 FROM gcr.io/caci-main/hdfs-spark-base:latest
 MAINTAINER Dimitrios Traskas <dtraskas@caci.co.uk>
 
-ARG ZEPPELIN_VERSION="branch-0.6"
-ARG SPARK_ZEPPELIN_VERSION="2.1"
-ARG MAJOR_HADOOP_VERSION="2.7"
+ARG ZEPPELIN_VERSION="v0.6.2"
+ARG SPARK_ZEPPELIN_VERSION="2.0"
+ARG MAJOR_HADOOP_VERSION="2.6"
 
 WORKDIR /zeppelin
 
