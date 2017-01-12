@@ -1,6 +1,12 @@
 FROM gcr.io/caci-main/hdfs-spark-base:latest
 MAINTAINER Dimitrios Traskas <dtraskas@caci.co.uk>
 
+#pip
+RUN apt-get update \
+ && easy_install3 pip py4j \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
 # SciPy
 RUN set -ex \
  && buildDeps=' \
