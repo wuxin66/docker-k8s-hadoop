@@ -3,8 +3,7 @@ kind: ReplicationController
 metadata:
   labels:
     name: spark-master
-  name: spark-master
-  namespace: caci-cluster
+  name: spark-master  
 spec:
   replicas: 1
   selector:
