@@ -6,8 +6,7 @@ RUN mkdir -p /opt && \
     cd /opt && \
     curl http://www.us.apache.org/dist/zeppelin/zeppelin-0.6.2/zeppelin-0.6.2-bin-all.tgz | \
         tar -zx && \
-    ln -s zeppelin-${ZEPPELIN_VER}-bin-all zeppelin && \
-    echo Zeppelin ${ZEPPELIN_VER} installed in /opt
+    ln -s zeppelin-0.6.2-bin-all zeppelin    
 
 ADD zeppelin-log4j.properties /opt/zeppelin/conf/log4j.properties
 ADD zeppelin-env.sh /opt/zeppelin/conf/zeppelin-env.sh
