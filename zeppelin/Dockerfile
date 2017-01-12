@@ -18,4 +18,4 @@ ENV ZEPPELIN_HOME=/opt/zeppelin
 ENV ZEPPELIN_CONF_DIR="${ZEPPELIN_HOME}/conf"
 
 WORKDIR $ZEPPELIN_HOME
-CMD ["/opt/zeppelin/bin/docker-zeppelin.sh", "${ZEPPELIN_CONF_DIR}"]
+CMD ["/opt/zeppelin/bin/zeppelin.sh", "${ZEPPELIN_CONF_DIR}"]
