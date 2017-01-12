@@ -1,3 +1,6 @@
+FROM gcr.io/caci-main/hdfs-spark-base:latest
+MAINTAINER Dimitrios Traskas <dtraskas@caci.co.uk>
+
 # SciPy
 RUN set -ex \
  && buildDeps=' \
