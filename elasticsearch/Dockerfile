@@ -1,5 +1,6 @@
 FROM debian:jessie
 MAINTAINER Dimitrios Traskas <dtraskas@caci.co.uk>
+
 RUN apt-get update \
  && apt-get install -y locales \
  && dpkg-reconfigure -f noninteractive locales \
@@ -20,30 +21,41 @@ RUN ln -s /usr/bin/python3 /usr/bin/python \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-ENV ES_PKG_NAME elasticsearch-5.1.2
+# Export HTTP & Transport
+EXPOSE 9200 9300
+
+ENV VERSION 5.1.1
 
 # Install Elasticsearch.
-RUN \
-  cd / && \
-  wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch/$ES_PKG_NAME.tar.gz && \
-  tar xvzf $ES_PKG_NAME.tar.gz && \
-  rm -f $ES_PKG_NAME.tar.gz && \
-  mv /$ES_PKG_NAME /elasticsearch
+RUN apk add --update bash curl ca-certificates sudo && \
+  ( curl -Lskj https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$VERSION.tar.gz | \
+  gunzip -c - | tar xf - ) && \
+  mv /elasticsearch-$VERSION /elasticsearch && \
+  rm -rf $(find /elasticsearch | egrep "(\.(exe|bat)$)") && \
+  apk del curl
 
-# Define mountable directories.
+# Volume for Elasticsearch data
 VOLUME ["/data"]
 
-# Mount elasticsearch.yml config
-ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
+# Copy configuration
+COPY config /elasticsearch/config
 
-# Define working directory.
-WORKDIR /data
+# Copy run script
+COPY run.sh /
 
-# Define default command.
-CMD ["/elasticsearch/bin/elasticsearch"]
+# Set environment variables defaults
+ENV ES_JAVA_OPTS "-Xms512m -Xmx512m"
+ENV CLUSTER_NAME elasticsearch-default
+ENV NODE_MASTER true
+ENV NODE_DATA true
+ENV NODE_INGEST true
+ENV HTTP_ENABLE true
+ENV NETWORK_HOST _site_
+ENV HTTP_CORS_ENABLE true
+ENV HTTP_CORS_ALLOW_ORIGIN *
+ENV NUMBER_OF_MASTERS 1
+ENV NUMBER_OF_SHARDS 1
+ENV NUMBER_OF_REPLICAS 0
+ENV MAX_LOCAL_STORAGE_NODES 1
 
-# Expose ports.
-#   - 9200: HTTP
-#   - 9300: transport
-EXPOSE 9200
-EXPOSE 9300
+CMD ["/run.sh"]

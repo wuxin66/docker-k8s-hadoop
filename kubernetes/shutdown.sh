@@ -7,6 +7,12 @@ kubectl delete -f spark-ui-proxy-service.yaml
 kubectl delete -f zeppelin-controller.yaml
 kubectl delete -f zeppelin-service.yaml
 kubectl delete rc spark-driver
+kubectl delete -f service-account.yaml
+kubectl delete -f es-discovery-svc.yaml
+kubectl delete -f es-svc.yaml
+kubectl delete -f es-master-rc.yaml
+kubectl delete -f es-client-rc.yaml
+kubectl delete -f es-data-rc.yaml
 
 kubectl get pods
 while [ $(kubectl get pods | grep -E 'spark-master|spark-worker|spark-driver' | grep Terminating | wc -l) -gt 0 ]
