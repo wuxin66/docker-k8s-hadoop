@@ -1,25 +1,11 @@
-FROM debian:jessie
+FROM alpine:3.5
 MAINTAINER Dimitrios Traskas <dtraskas@caci.co.uk>
 
-RUN apt-get update \
- && apt-get install -y locales \
- && dpkg-reconfigure -f noninteractive locales \
- && locale-gen C.UTF-8 \
- && /usr/sbin/update-locale LANG=C.UTF-8 \
- && echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen \
- && locale-gen \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+ENV JAVA_HOME=/usr/lib/jvm/default-jvm/jre
 
-ENV LANG en_GB.UTF-8
-ENV LANGUAGE en_GB:en
-ENV LC_ALL en_GB.UTF-8
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl unzip ssh wget
-RUN ln -s /usr/bin/python3 /usr/bin/python \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk upgrade --update-cache; \
+    apk add openjdk8-jre; \
+    rm -rf /tmp/* /var/cache/apk/*
 
 # Export HTTP & Transport
 EXPOSE 9200 9300
@@ -31,7 +17,8 @@ RUN apk add --update bash curl ca-certificates sudo && \
   ( curl -Lskj https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$VERSION.tar.gz | \
   gunzip -c - | tar xf - ) && \
   mv /elasticsearch-$VERSION /elasticsearch && \
-  rm -rf $(find /elasticsearch | egrep "(\.(exe|bat)$)")
+  rm -rf $(find /elasticsearch | egrep "(\.(exe|bat)$)") && \
+  apk del curl
 
 # Volume for Elasticsearch data
 VOLUME ["/data"]
