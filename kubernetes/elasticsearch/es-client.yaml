@@ -1,41 +1,43 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  name: es
+  name: es-client
+  namespace: es-cluster
   labels:
     component: elasticsearch
+    role: client
 spec:
-  replicas: 1
   template:
     metadata:
       labels:
         component: elasticsearch
+        role: client
     spec:
-      serviceAccount: elasticsearch
       containers:
-      - name: es
+      - name: es-client
         securityContext:
+          privileged: true
           capabilities:
             add:
               - IPC_LOCK
-        image: elasticsearch
+        # Set this to your own image if desired.
+        image: gcr.io/caci-main/elasticsearch:latest
+        imagePullPolicy: Always
         env:
-        - name: KUBERNETES_CA_CERTIFICATE_FILE
-          value: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         - name: NAMESPACE
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        - name: "CLUSTER_NAME"
-          value: "myesdb"
-        - name: "DISCOVERY_SERVICE"
-          value: "elasticsearch"
+        - name: CLUSTER_NAME
+          value: "my_es_cluster"
         - name: NODE_MASTER
-          value: "true"
+          value: "false"
         - name: NODE_DATA
-          value: "true"
+          value: "false"
         - name: HTTP_ENABLE
           value: "true"
+        - name: ES_HEAP_SIZE
+          value: "512m"
         ports:
         - containerPort: 9200
           name: http
@@ -43,9 +45,13 @@ spec:
         - containerPort: 9300
           name: transport
           protocol: TCP
+        resources:
+          limits:
+            memory: 1Gi
         volumeMounts:
-        - mountPath: /data
-          name: storage
+        - name: storage
+          mountPath: /data
       volumes:
-      - name: storage
-        emptyDir: {}
+          - emptyDir:
+              medium: ""
+            name: "storage"
