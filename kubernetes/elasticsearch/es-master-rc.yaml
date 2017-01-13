@@ -20,7 +20,7 @@ spec:
           capabilities:
             add:
               - IPC_LOCK
-        image: gcr.io/caci-main/elasticsearch:latest
+        image: elasticsearch
         env:
         - name: KUBERNETES_CA_CERTIFICATE_FILE
           value: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
