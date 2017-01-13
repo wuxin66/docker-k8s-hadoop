@@ -73,8 +73,7 @@ COPY docker-entrypoint.sh /
 
 EXPOSE 9200 9300
 
-COPY docker-node-entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["elasticsearch"]
