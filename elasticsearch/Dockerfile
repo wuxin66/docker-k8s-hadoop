@@ -72,5 +72,6 @@ VOLUME /usr/share/elasticsearch/data
 COPY docker-entrypoint.sh /
 
 EXPOSE 9200 9300
+RUN chmod +x docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["elasticsearch"]
