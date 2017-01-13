@@ -1,8 +1,24 @@
 FROM debian:jessie
 MAINTAINER Dimitrios Traskas <dtraskas@caci.co.uk>
+RUN apt-get update \
+ && apt-get install -y locales \
+ && dpkg-reconfigure -f noninteractive locales \
+ && locale-gen C.UTF-8 \
+ && /usr/sbin/update-locale LANG=C.UTF-8 \
+ && echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen \
+ && locale-gen \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-# Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+ENV LANG en_GB.UTF-8
+ENV LANGUAGE en_GB:en
+ENV LC_ALL en_GB.UTF-8
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl unzip python3 python3-setuptools ssh wget
+RUN ln -s /usr/bin/python3 /usr/bin/python \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV ES_PKG_NAME elasticsearch-5.1.2
 
