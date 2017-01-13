@@ -25,7 +25,7 @@ ENV ES_PKG_NAME elasticsearch-5.1.2
 # Install Elasticsearch.
 RUN \
   cd / && \
-  wget https://artifacts.elastic.co/downloads/elasticsearch/$ES_PKG_NAME.tar.gz && \
+  wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch/$ES_PKG_NAME.tar.gz && \
   tar xvzf $ES_PKG_NAME.tar.gz && \
   rm -f $ES_PKG_NAME.tar.gz && \
   mv /$ES_PKG_NAME /elasticsearch
