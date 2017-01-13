@@ -1,0 +1,1 @@
+kubectl create -f es-client-rc.yaml

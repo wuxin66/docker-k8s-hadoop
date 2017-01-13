@@ -1,4 +1,4 @@
-printf "Deploying K8S cluster...\n"
+printf "Deploying K8S HDFS, Spark, Zeppelin cluster...\n"
 printf "Start spark-master...\n"
 kubectl create -f hdfs-spark-master-service.yaml
 kubectl create -f hdfs-spark-master-controller.yaml

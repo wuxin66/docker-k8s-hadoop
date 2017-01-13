@@ -1,4 +1,4 @@
-printf "Shutdown cluster...\n"
+printf "Shutdown K8S cluster...\n"
 kubectl delete -f hdfs-spark-master-controller.yaml 
 kubectl delete -f spark-worker-controller.yaml 
 kubectl delete -f hdfs-spark-master-service.yaml 
@@ -16,4 +16,4 @@ do
 done
 
 kubectl get pods
-printf "\nFinished!!\n"
+printf "\nCompleted shutdown process!\n"
