@@ -1,47 +1,31 @@
-FROM alpine:3.5
+FROM openjdk:8u111-jre-alpine
 MAINTAINER Dimitrios Traskas <dtraskas@caci.co.uk>
 
-ENV JAVA_HOME=/usr/lib/jvm/default-jvm/jre
+RUN apk -U add bash
 
-RUN apk upgrade --update-cache; \
-    apk add openjdk8-jre; \
-    rm -rf /tmp/* /var/cache/apk/*
+ENV ES_VERSION=5.1.1
 
-# Export HTTP & Transport
+ADD https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$ES_VERSION.tar.gz /tmp/es.tgz
+RUN cd /usr/share && \
+  tar xf /tmp/es.tgz && \
+  rm /tmp/es.tgz
+
 EXPOSE 9200 9300
 
-ENV VERSION 5.1.1
+ENV ES_HOME=/usr/share/elasticsearch-$ES_VERSION \
+    DEFAULT_ES_USER=elasticsearch \
+    DISCOVER_TRANSPORT_IP=eth0 \
+    DISCOVER_HTTP_IP=eth0 \
+    ES_JAVA_OPTS="-Xms1g -Xmx1g"
 
-# Install Elasticsearch.
-RUN apk add --update bash curl ca-certificates sudo && \
-  ( curl -Lskj https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$VERSION.tar.gz | \
-  gunzip -c - | tar xf - ) && \
-  mv /elasticsearch-$VERSION /elasticsearch && \
-  rm -rf $(find /elasticsearch | egrep "(\.(exe|bat)$)") && \
-  apk del curl
+RUN adduser -S -s /bin/sh $DEFAULT_ES_USER
 
-# Volume for Elasticsearch data
-VOLUME ["/data"]
+VOLUME ["/data","/conf"]
 
-# Copy configuration
-COPY config /elasticsearch/config
+WORKDIR $ES_HOME
 
-# Copy run script
-COPY run.sh /
+COPY java.policy /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/
+COPY start /start
+COPY log4j2.properties $ES_HOME/config/
 
-# Set environment variables defaults
-ENV ES_JAVA_OPTS "-Xms512m -Xmx512m"
-ENV CLUSTER_NAME elasticsearch-default
-ENV NODE_MASTER true
-ENV NODE_DATA true
-ENV NODE_INGEST true
-ENV HTTP_ENABLE true
-ENV NETWORK_HOST _site_
-ENV HTTP_CORS_ENABLE true
-ENV HTTP_CORS_ALLOW_ORIGIN *
-ENV NUMBER_OF_MASTERS 1
-ENV NUMBER_OF_SHARDS 1
-ENV NUMBER_OF_REPLICAS 0
-ENV MAX_LOCAL_STORAGE_NODES 1
-
-CMD ["/run.sh"]
+CMD ["/start"]
