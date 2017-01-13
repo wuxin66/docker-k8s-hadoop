@@ -16,7 +16,7 @@ ENV LANGUAGE en_GB:en
 ENV LC_ALL en_GB.UTF-8
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl unzip papk ssh wget
+    curl unzip ssh wget
 RUN ln -s /usr/bin/python3 /usr/bin/python \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -31,8 +31,7 @@ RUN apk add --update bash curl ca-certificates sudo && \
   ( curl -Lskj https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$VERSION.tar.gz | \
   gunzip -c - | tar xf - ) && \
   mv /elasticsearch-$VERSION /elasticsearch && \
-  rm -rf $(find /elasticsearch | egrep "(\.(exe|bat)$)") && \
-  apk del curl
+  rm -rf $(find /elasticsearch | egrep "(\.(exe|bat)$)")
 
 # Volume for Elasticsearch data
 VOLUME ["/data"]
