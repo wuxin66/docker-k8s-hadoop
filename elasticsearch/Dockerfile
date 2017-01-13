@@ -1,11 +1,25 @@
 FROM debian:jessie
 MAINTAINER Dimitrios Traskas <dtraskas@caci.co.uk>
 
-ENV JAVA_HOME=/usr/lib/jvm/default-jvm/jre
+RUN apt-get update \
+ && apt-get install -y locales \
+ && dpkg-reconfigure -f noninteractive locales \
+ && locale-gen C.UTF-8 \
+ && /usr/sbin/update-locale LANG=C.UTF-8 \
+ && echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen \
+ && locale-gen \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN apk upgrade --update-cache; \
-    apk add openjdk8-jre; \
-    rm -rf /tmp/* /var/cache/apk/*
+ENV LANG en_GB.UTF-8
+ENV LANGUAGE en_GB:en
+ENV LC_ALL en_GB.UTF-8
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl unzip papk ssh wget
+RUN ln -s /usr/bin/python3 /usr/bin/python \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Export HTTP & Transport
 EXPOSE 9200 9300
