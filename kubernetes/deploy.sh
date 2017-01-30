@@ -2,8 +2,6 @@ printf "Deploying K8S HDFS, Spark, Zeppelin cluster...\n"
 printf "Start spark-master...\n"
 kubectl create -f hdfs-spark-master-service.yaml
 kubectl create -f hdfs-spark-master-controller.yaml
-kubectl create -f spark-ui-proxy-controller.yaml
-kubectl create -f spark-ui-proxy-service.yaml
 kubectl create -f zeppelin-controller.yaml
 kubectl create -f zeppelin-service.yaml
 
