@@ -17,13 +17,14 @@ spec:
       - image: gcr.io/caci-main/spark-master:latest
         name: spark-master
         volumeMounts:
-          - mountPath: /staging-pd
-           name: staging-volume 
+          - mountPath: /test-pd
+            name: test-volume
         volumes:
-        - name: staging-volume
+        - name: test-volume
+          # This GCE PD must already exist.
           gcePersistentDisk:
-            pdName: hdfs-main 
-            fsType: ext4           
+            pdName: hdfs-main
+            fsType: ext4       
         ports:
         - containerPort: 8080
           hostPort: 8080
