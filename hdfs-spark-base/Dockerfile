@@ -17,8 +17,7 @@ ENV LC_ALL en_GB.UTF-8
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl unzip python python-openssl ssh wget
-RUN ln -s /usr/bin/python3 /usr/bin/python \
-    && apt-get clean \
+RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # JAVA
