@@ -17,10 +17,10 @@ spec:
       - image: gcr.io/caci-main/spark-master:latest
         name: spark-master
         volumeMounts:
-          - mountPath: /test-pd
-            name: test-volume
+          - mountPath: /
+            name: testvol
         volumes:
-        - name: test-volume
+        - name: testvol
           # This GCE PD must already exist.
           gcePersistentDisk:
             pdName: hdfs-main
