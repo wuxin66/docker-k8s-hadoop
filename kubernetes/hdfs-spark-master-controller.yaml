@@ -16,6 +16,14 @@ spec:
       containers:
       - image: gcr.io/caci-main/spark-master:latest
         name: spark-master
+        volumeMounts:
+          -mountPath: /staging-pd
+           name: staging-volume 
+        volumes:
+        - name: staging-volume
+          gcePersistentDisk:
+            pdName: hdfs-main 
+            fsType: ext4           
         ports:
         - containerPort: 8080
           hostPort: 8080
