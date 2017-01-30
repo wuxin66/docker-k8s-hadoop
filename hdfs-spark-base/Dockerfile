@@ -38,7 +38,7 @@ RUN curl -sL --retry 3 --insecure \
 # Install the Google Cloud SDK.
 ENV HOME /
 ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
-RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip && unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip
+RUN wget --no-check-certificate https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip && unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip
 RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash-completion=true --rc-path=/.bashrc --additional-components app-engine-java app-engine-python app kubectl alpha beta gcd-emulator pubsub-emulator cloud-datastore-emulator app-engine-go bigtable
 
 # Disable updater check for the whole installation.
