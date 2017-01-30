@@ -17,8 +17,8 @@ spec:
       - image: gcr.io/caci-main/spark-master:latest
         name: spark-master
         volumeMounts:
-          - mountPath: /test-pd
-            name: test-volume        
+          - mountPath: /test-ssd
+            name: test-ssd      
         ports:
         - containerPort: 8080
           hostPort: 8080
@@ -33,8 +33,9 @@ spec:
           hostPort: 50070
           protocol: TCP
       volumes:
-      - name: test-volume 
+      - name: test-ssd 
         # This GCE PD must already exist.
-        gcePersistentDisk:
-          pdName: hdfs-main
-          fsType: ext4     
+        hostPath:
+          path: /mnt/disks/ssd0
+      nodeSelector:
+        cloud.google.com/gke-local-ssd: true    
