@@ -6,6 +6,8 @@ WORKDIR $SPARK_HOME
 EXPOSE 9000
 EXPOSE 7078
 
+RUN echo "export TERM=dumb" >> ~/.bashrc
+
 CMD echo $(hostname -i) spark-master >> /etc/hosts && \
     export SPARK_MASTER_IP=spark-master && \
     export SPARK_MASTER_PORT=7077 && \
@@ -15,6 +17,5 @@ CMD echo $(hostname -i) spark-master >> /etc/hosts && \
     bin/spark-shell --master spark://spark-master:7077 && \
     tail -100f $SPARK_HOME/logs/spark--org.apache.spark.deploy.master.Master-1-$(hostname).out
 
-RUN echo "export TERM=dumb" >> ~/.bashrc
 WORKDIR /
 
