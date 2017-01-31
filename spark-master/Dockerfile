@@ -14,3 +14,7 @@ CMD echo $(hostname -i) spark-master >> /etc/hosts && \
     $SPARK_HOME/sbin/start-master.sh -h spark-master && \
     bin/spark-shell --master spark://spark-master:7077 && \
     tail -100f $SPARK_HOME/logs/spark--org.apache.spark.deploy.master.Master-1-$(hostname).out
+
+RUN echo "export TERM=dumb" >> ~/.bashrc
+WORKDIR /
+

@@ -75,6 +75,7 @@ ENV YARN_CONF_DIR $HADOOP_PREFIX/etc/hadoop
 
 ADD core-site.xml /hadoop/etc/hadoop/.
 ADD hdfs-site.xml /hadoop/etc/hadoop/.
+ADD hadoop-env.sh /hadoop/etc/hadoop/.
 
 # SPARK
 ENV SPARK_VERSION 2.0.0
