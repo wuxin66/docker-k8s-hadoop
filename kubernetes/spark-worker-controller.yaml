@@ -21,7 +21,7 @@ spec:
             name: ssd0        
         env:
         - name: SPARK_WORKER_MEMORY
-          value: 20g                               
+          value: 10g                               
         ports:
         - containerPort: 7078
           hostPort: 7078

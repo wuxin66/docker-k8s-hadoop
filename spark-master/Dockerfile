@@ -6,6 +6,8 @@ WORKDIR $SPARK_HOME
 EXPOSE 9000
 EXPOSE 7078
 
+CMD chmod -R 777
+
 CMD echo $(hostname -i) spark-master >> /etc/hosts && \
     export SPARK_MASTER_IP=spark-master && \
     export SPARK_MASTER_PORT=7077 && \
