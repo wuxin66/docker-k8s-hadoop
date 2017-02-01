@@ -18,7 +18,11 @@ spec:
         name: spark-master
         resources:
           requests:
+            cpu: 400m
+            memory: 1Gi
+          limits:
             cpu: 500m
+            memory: 2Gi
         volumeMounts:
           - mountPath: /root/hdfs/datanode
             name: ssd0     

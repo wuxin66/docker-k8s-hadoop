@@ -17,8 +17,12 @@ spec:
       - image: gcr.io/caci-main/spark-worker:latest
         name: spark-worker
         resources:
-          requests:
+          requests:                    
+            cpu: 400m
+            memory: 1Gi
+          limits:
             cpu: 500m
+            memory: 2Gi
         volumeMounts:
           - mountPath: /root/hdfs/datanode
             name: ssd0        
