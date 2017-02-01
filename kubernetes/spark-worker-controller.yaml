@@ -37,3 +37,5 @@ spec:
           # This GCE PD must already exist.
           hostPath:
             path: /mnt/disks/ssd0
+        nodeSelector:
+            cloud.google.com/gke-local-ssd: "true"        
