@@ -16,6 +16,13 @@ spec:
       containers:
       - image: gcr.io/caci-main/spark-master:latest
         name: spark-master        
+      resources:
+          requests:                    
+            cpu: 400m
+            memory: 20Gi
+          limits:
+            cpu: 500m
+            memory: 22Gi
         volumeMounts:
           - mountPath: /root/hdfs/datanode
             name: ssd0     

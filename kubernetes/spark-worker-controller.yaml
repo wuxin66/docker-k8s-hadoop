@@ -18,7 +18,17 @@ spec:
         name: spark-worker        
         volumeMounts:
           - mountPath: /root/hdfs/datanode
-            name: ssd0                                               
+            name: ssd0        
+      resources:
+          requests:                    
+            cpu: 400m
+            memory: 20Gi
+          limits:
+            cpu: 500m
+            memory: 22Gi
+        env:
+        - name: SPARK_WORKER_MEMORY
+          value: 20g                               
         ports:
         - containerPort: 7078
           hostPort: 7078
