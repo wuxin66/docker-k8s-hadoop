@@ -19,13 +19,13 @@ spec:
         volumeMounts:
           - mountPath: /root/hdfs/datanode
             name: ssd0        
-      resources:
-          requests:                    
-            cpu: 400m
-            memory: 20Gi
-          limits:
-            cpu: 500m
-            memory: 22Gi
+        resources:
+            requests:                    
+              cpu: 400m
+              memory: 20Gi
+            limits:
+              cpu: 500m
+              memory: 22Gi
         env:
         - name: SPARK_WORKER_MEMORY
           value: 20g                               
