@@ -5,7 +5,7 @@ metadata:
     name: spark-worker
   name: spark-worker  
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     name: spark-worker
   template:
@@ -16,6 +16,9 @@ spec:
       containers:
       - image: gcr.io/caci-main/spark-worker:latest
         name: spark-worker
+        resources:
+          requests:
+            cpu: 500m
         volumeMounts:
           - mountPath: /root/hdfs/datanode
             name: ssd0        
