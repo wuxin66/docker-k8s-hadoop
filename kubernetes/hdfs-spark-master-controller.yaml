@@ -26,6 +26,8 @@ spec:
         volumeMounts:
           - mountPath: /root/hdfs/datanode
             name: ssd0     
+          - mountPath: /data
+            name: ssd1
         ports:
         - containerPort: 8080
           hostPort: 8080
@@ -44,6 +46,10 @@ spec:
         # This GCE PD must already exist.
         hostPath:
           path: /mnt/disks/ssd0
+      - name: ssd1
+        # This GCE PD must already exist.
+        hostPath:
+          path: /mnt/disks/ssd1
       nodeSelector:
         cloud.google.com/gke-local-ssd: "true"    
         master: "true"      
