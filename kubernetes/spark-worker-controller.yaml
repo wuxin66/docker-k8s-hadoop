@@ -16,6 +16,9 @@ spec:
       containers:
       - image: gcr.io/caci-main/spark-worker:latest
         name: spark-worker
+        volumeMounts:
+          - mountPath: /root/hdfs
+            name: ssd0        
         env:
         - name: SPARK_WORKER_MEMORY
           value: 2g                               
@@ -29,3 +32,8 @@ spec:
         - containerPort: 50020
           hostPort: 50020
           protocol: TCP
+        volumes:
+        - name: ssd0 
+          # This GCE PD must already exist.
+          hostPath:
+            path: /mnt/disks/ssd0
