@@ -17,7 +17,7 @@ spec:
       - image: gcr.io/caci-main/spark-worker:latest
         name: spark-worker
         volumeMounts:
-          - mountPath: /root/hdfs
+          - mountPath: /root/hdfs/datanode
             name: ssd0        
         env:
         - name: SPARK_WORKER_MEMORY
