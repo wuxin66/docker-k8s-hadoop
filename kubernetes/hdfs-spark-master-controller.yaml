@@ -17,7 +17,7 @@ spec:
       - image: gcr.io/caci-main/spark-master:latest
         name: spark-master
         volumeMounts:
-          - mountPath: /hdfs
+          - mountPath: /root/hdfs
             name: ssd0     
         ports:
         - containerPort: 8080
