@@ -18,7 +18,7 @@ spec:
         name: spark-master
         resources:
           requests:
-            cpu: "900m"
+            cpu: "500m"
         volumeMounts:
           - mountPath: /root/hdfs/datanode
             name: ssd0     
