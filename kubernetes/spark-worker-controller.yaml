@@ -32,10 +32,10 @@ spec:
         - containerPort: 50020
           hostPort: 50020
           protocol: TCP
-        volumes:
-        - name: ssd0 
-          # This GCE PD must already exist.
-          hostPath:
-            path: /mnt/disks/ssd0
-        nodeSelector:
-            cloud.google.com/gke-local-ssd: "true"        
+      volumes:
+      - name: ssd0 
+        # This GCE PD must already exist.
+        hostPath:
+          path: /mnt/disks/ssd0
+      nodeSelector:
+        cloud.google.com/gke-local-ssd: "true"        
