@@ -16,9 +16,12 @@ spec:
       containers:
       - image: gcr.io/caci-main/spark-master:latest
         name: spark-master
+        resources:
+          requests:
+            cpu: "1"
         volumeMounts:
-          - mountPath: /test-ssd
-            name: test-ssd      
+          - mountPath: /hdfs
+            name: ssd0     
         ports:
         - containerPort: 8080
           hostPort: 8080
@@ -33,7 +36,7 @@ spec:
           hostPort: 50070
           protocol: TCP
       volumes:
-      - name: test-ssd 
+      - name: ssd0 
         # This GCE PD must already exist.
         hostPath:
           path: /mnt/disks/ssd0
