@@ -18,10 +18,8 @@ spec:
         name: spark-master      
         resources:
           requests:   
-            cpu: "3000"                 
             memory: 20Gi
           limits:
-            cpu: "3600"
             memory: 24Gi
         volumeMounts:
           - mountPath: /root/hdfs/datanode
