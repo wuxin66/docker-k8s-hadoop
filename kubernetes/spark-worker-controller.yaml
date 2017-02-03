@@ -26,7 +26,7 @@ spec:
               memory: 24Gi
         env:
         - name: SPARK_WORKER_MEMORY
-          value: 20g                               
+          value: 24g                               
         ports:
         - containerPort: 7078
           hostPort: 7078
