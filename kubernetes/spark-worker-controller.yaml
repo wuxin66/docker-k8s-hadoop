@@ -21,8 +21,10 @@ spec:
             name: ssd0        
         resources:
             requests:                    
+              cpu: "3000"
               memory: 20Gi
             limits:
+              cpu: "3600"
               memory: 24Gi
         env:
         - name: SPARK_WORKER_MEMORY

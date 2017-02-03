@@ -17,9 +17,11 @@ spec:
       - image: gcr.io/caci-main/spark-master:latest
         name: spark-master      
         resources:
-          requests:                    
+          requests:   
+            cpu: "3000"                 
             memory: 20Gi
           limits:
+            cpu: "3600"
             memory: 24Gi
         volumeMounts:
           - mountPath: /root/hdfs/datanode
