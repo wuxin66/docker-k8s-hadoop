@@ -20,4 +20,4 @@ spec:
             requests:                    
               memory: 20Gi
             limits:
-              memory: 22Gi
+              memory: 24Gi
