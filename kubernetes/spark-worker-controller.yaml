@@ -21,9 +21,9 @@ spec:
             name: ssd0        
         resources:
             requests:                    
-              memory: 20Gi
+              memory: 10Gi
             limits:
-              memory: 24Gi
+              memory: 14Gi
         env:
         - name: SPARK_WORKER_MEMORY
           value: 24g                               
