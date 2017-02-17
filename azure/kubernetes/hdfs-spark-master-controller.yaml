@@ -18,9 +18,9 @@ spec:
         name: spark-master      
         resources:
           requests:   
-            memory: 8Gi
+            memory: 2Gi
           limits:
-            memory: 10Gi
+            memory: 5Gi
         ports:
         - containerPort: 8080
           hostPort: 8080

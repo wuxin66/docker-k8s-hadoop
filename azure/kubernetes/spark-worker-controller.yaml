@@ -18,12 +18,12 @@ spec:
         name: spark-worker        
         resources:
             requests:                    
-              memory: 10Gi
+              memory: 2Gi
             limits:
-              memory: 14Gi
+              memory: 4Gi
         env:
         - name: SPARK_WORKER_MEMORY
-          value: 14g                               
+          value: 4g                               
         ports:
         - containerPort: 7078
           hostPort: 7078
