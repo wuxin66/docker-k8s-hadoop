@@ -15,12 +15,7 @@ spec:
     spec:
       containers:
       - image: cacidocker-caciuk.azurecr.io/caci-main/spark-master:latest
-        name: spark-master      
-        resources:
-          requests:   
-            memory: 2Gi
-          limits:
-            memory: 5Gi
+        name: spark-master              
         ports:
         - containerPort: 8080
           hostPort: 8080
@@ -33,6 +28,4 @@ spec:
           protocol: TCP
         - containerPort: 50070
           hostPort: 50070
-          protocol: TCP
-      nodeSelector:
-        master: "true"      
+          protocol: TCP      

@@ -15,11 +15,4 @@ spec:
         - name: zeppelin
           image: cacidocker-caciuk.azurecr.io/caci-main/zeppelin:latest
           ports:
-            - containerPort: 8080
-          resources:
-            requests:                 
-              memory: 1Gi
-            limits:              
-              memory: 2Gi
-      nodeSelector:
-        master: "true" 
+            - containerPort: 8080      
