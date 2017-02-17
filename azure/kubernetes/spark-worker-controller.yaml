@@ -26,3 +26,5 @@ spec:
         - containerPort: 50020
           hostPort: 50020
           protocol: TCP      
+      imagePullSecrets:
+        - name: myregistrykey
