@@ -15,7 +15,6 @@
         <name>dfs.adls.oauth2.credential</name>
         <value>m1GH/+J7ViV41ZR/n2cQYcRpOJd0dDh0Mx/CK8RvjYs=</value>
     </property>
-
     <property>
         <name>fs.adl.impl</name>
         <value>org.apache.hadoop.fs.adl.AdlFileSystem</value>
