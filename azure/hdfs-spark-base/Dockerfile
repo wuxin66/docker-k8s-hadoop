@@ -57,15 +57,13 @@ ADD hdfs-site.xml /hadoop/etc/hadoop/.
 ADD hadoop-env.sh /hadoop/etc/hadoop/.
 
 # SPARK
-ENV SPARK_VERSION 2.0.0
-ENV HADOOP_MAJOR 2.7
 ENV SPARK_DIR spark
 ENV SPARK_HOME /$SPARK_DIR
 RUN echo "${SPARK_MASTER_SERVICE_HOST} spark-master" >> /etc/hosts
-RUN wget http://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
-RUN tar xzf spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
-RUN ln -s spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR $SPARK_DIR
-RUN rm spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
+RUN wget http://archive.apache.org/dist/spark/spark-2.1.0/spark-2.1.0-bin-without-hadoop.tgz
+RUN tar xzf spark-2.1.0-bin-without-hadoop.tgz
+RUN ln -s spark-2.1.0-bin-without-hadoop $SPARK_DIR
+RUN rm spark-2.1.0-bin-without-hadoop.tgz
 
 EXPOSE 8080 4040 7077 7078
 
