@@ -4,9 +4,9 @@ MAINTAINER Dimitrios Traskas <dtraskas@caci.co.uk>
 # zeppelin
 RUN mkdir -p /opt && \
     cd /opt && \
-    curl http://www.us.apache.org/dist/zeppelin/zeppelin-0.6.2/zeppelin-0.6.2-bin-all.tgz | \
+    curl http://www.us.apache.org/dist/zeppelin/zeppelin-0.7.0/zeppelin-0.7.0-bin-all.tgz | \
         tar -zx && \
-    ln -s zeppelin-0.6.2-bin-all zeppelin    
+    ln -s zeppelin-0.7.0-bin-all zeppelin    
 
 ADD zeppelin-log4j.properties /opt/zeppelin/conf/log4j.properties
 ADD zeppelin-env.sh /opt/zeppelin/conf/zeppelin-env.sh
