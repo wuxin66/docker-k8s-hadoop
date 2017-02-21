@@ -3,4 +3,25 @@
         <name>fs.defaultFS</name>
         <value>hdfs://spark-master:9000</value>
     </property>
+    <property>
+        <name>dfs.adls.oauth2.refresh.url</name>
+        <value>https://login.microsoftonline.com/8193a455-d4e6-483e-b99e-7969393bcf82/oauth2/token</value>
+    </property>
+    <property>
+        <name>dfs.adls.oauth2.client.id</name>
+        <value>3ff4eb02-e418-4067-81ea-86323e15c83b</value>
+    </property>
+    <property>
+        <name>dfs.adls.oauth2.credential</name>
+        <value>m1GH/+J7ViV41ZR/n2cQYcRpOJd0dDh0Mx/CK8RvjYs=</value>
+    </property>
+
+    <property>
+        <name>fs.adl.impl</name>
+        <value>org.apache.hadoop.fs.adl.AdlFileSystem</value>
+    </property>
+    <property>
+        <name>fs.AbstractFileSystem.adl.impl</name>
+        <value>org.apache.hadoop.fs.adl.Adl</value>
+    </property>
 </configuration>

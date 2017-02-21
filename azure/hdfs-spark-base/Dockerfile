@@ -37,13 +37,12 @@ RUN curl -sL --retry 3 --insecure \
 
 #HDFS
 WORKDIR /
-ENV HADOOP_VERSION 2.7.3
-RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
-RUN tar xzf hadoop-$HADOOP_VERSION.tar.gz
-RUN mkdir hadoop-$HADOOP_VERSION/logs
-RUN chown -R root:root hadoop-$HADOOP_VERSION
-RUN ln -s hadoop-$HADOOP_VERSION hadoop
-RUN rm hadoop-$HADOOP_VERSION.tar.gz
+RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-3.0.0-alpha2/hadoop-3.0.0-alpha2.tar.gz
+RUN tar xzf hadoop-3.0.0-alpha2.tar.gz
+RUN mkdir hadoop-3.0.0-alpha2/logs
+RUN chown -R root:root hadoop-3.0.0-alpha2
+RUN ln -s hadoop-3.0.0-alpha2 hadoop
+RUN rm hadoop-3.0.0-alpha2.tar.gz
 
 ENV HADOOP_PREFIX /hadoop
 ENV HADOOP_COMMON_HOME /hadoop
