@@ -15,6 +15,8 @@ spec:
         - name: zeppelin
           image: cacidocker-caciuk.azurecr.io/caci-main/zeppelin
           ports:
-            - containerPort: 8080      
+            - containerPort: 8080
+      nodeSelector:
+        master: "true"   
       imagePullSecrets:
         - name: myregistrykey

@@ -37,12 +37,13 @@ RUN curl -sL --retry 3 --insecure \
 
 #HDFS
 WORKDIR /
-RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-3.0.0-alpha2/hadoop-3.0.0-alpha2.tar.gz
-RUN tar xzf hadoop-3.0.0-alpha2.tar.gz
-RUN mkdir hadoop-3.0.0-alpha2/logs
-RUN chown -R root:root hadoop-3.0.0-alpha2
-RUN ln -s hadoop-3.0.0-alpha2 hadoop
-RUN rm hadoop-3.0.0-alpha2.tar.gz
+ENV HADOOP_VERSION 2.7.3
+RUN wget http://archive.apache.org/dist/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
+RUN tar xzf hadoop-$HADOOP_VERSION.tar.gz
+RUN mkdir hadoop-$HADOOP_VERSION/logs
+RUN chown -R root:root hadoop-$HADOOP_VERSION
+RUN ln -s hadoop-$HADOOP_VERSION hadoop
+RUN rm hadoop-$HADOOP_VERSION.tar.gz
 
 ENV HADOOP_PREFIX /hadoop
 ENV HADOOP_COMMON_HOME /hadoop
@@ -57,13 +58,15 @@ ADD hdfs-site.xml /hadoop/etc/hadoop/.
 ADD hadoop-env.sh /hadoop/etc/hadoop/.
 
 # SPARK
+ENV SPARK_VERSION 2.0.0
+ENV HADOOP_MAJOR 2.7
 ENV SPARK_DIR spark
 ENV SPARK_HOME /$SPARK_DIR
 RUN echo "${SPARK_MASTER_SERVICE_HOST} spark-master" >> /etc/hosts
-RUN wget http://archive.apache.org/dist/spark/spark-2.1.0/spark-2.1.0-bin-without-hadoop.tgz
-RUN tar xzf spark-2.1.0-bin-without-hadoop.tgz
-RUN ln -s spark-2.1.0-bin-without-hadoop $SPARK_DIR
-RUN rm spark-2.1.0-bin-without-hadoop.tgz
+RUN wget http://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
+RUN tar xzf spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
+RUN ln -s spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR $SPARK_DIR
+RUN rm spark-$SPARK_VERSION-bin-hadoop$HADOOP_MAJOR.tgz
 
 EXPOSE 8080 4040 7077 7078
 
