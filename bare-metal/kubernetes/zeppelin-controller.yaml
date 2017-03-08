@@ -1,0 +1,20 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: zeppelin-controller
+spec:
+  replicas: 1
+  selector:
+    component: zeppelin
+  template:
+    metadata:
+      labels:
+        component: zeppelin
+    spec:
+      containers:
+        - name: zeppelin
+          image: cacidocker-caciuk.azurecr.io/caci-main/zeppelin
+          ports:
+            - containerPort: 8080      
+      imagePullSecrets:
+        - name: myregistrykey
