@@ -21,12 +21,12 @@ spec:
             name: ssd0         
         resources:
             requests:                    
-              memory: 4Gi
-            limits:
               memory: 6Gi
+            limits:
+              memory: 8Gi
         env:
         - name: SPARK_WORKER_MEMORY
-          value: 6g                              
+          value: 8g                              
         ports:
         - containerPort: 7078
           hostPort: 7078
@@ -41,5 +41,4 @@ spec:
         - name: myregistrykey
       volumes:
       - name: ssd0 
-        hostPath:
-          path: /grid
+        emptyDir: {}
