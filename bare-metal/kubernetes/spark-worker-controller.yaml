@@ -21,12 +21,12 @@ spec:
             name: ssd0         
         resources:
             requests:                    
-              memory: 6Gi
+              memory: 10Gi
             limits:
-              memory: 8Gi
+              memory: 12Gi
         env:
         - name: SPARK_WORKER_MEMORY
-          value: 8g                              
+          value: 12g                              
         ports:
         - containerPort: 7078
           hostPort: 7078
