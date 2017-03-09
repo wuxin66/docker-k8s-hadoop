@@ -5,7 +5,7 @@ metadata:
     name: spark-worker
   name: spark-worker  
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     name: spark-worker
   template:
@@ -21,12 +21,12 @@ spec:
             name: ssd0         
         resources:
             requests:                    
-              memory: 6Gi
+              memory: 4Gi
             limits:
-              memory: 8Gi
+              memory: 6Gi
         env:
         - name: SPARK_WORKER_MEMORY
-          value: 8g                              
+          value: 6g                              
         ports:
         - containerPort: 7078
           hostPort: 7078
