@@ -41,5 +41,4 @@ spec:
         - name: myregistrykey
       volumes:
       - name: ssd0 
-        hostPath:
-          path: /grid
+        emptyDir: {}
