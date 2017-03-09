@@ -18,9 +18,9 @@ spec:
         name: spark-master       
         resources:
           requests:   
-            memory: 1Gi
+            memory: 10Gi
           limits:
-            memory: 2Gi       
+            memory: 12Gi       
         volumeMounts:
           - mountPath: /root/hdfs/datanode
             name: ssd0   
@@ -40,6 +40,8 @@ spec:
       imagePullSecrets:
         - name: myregistrykey
       volumes:
-      - name: ssd0
-        emptyDir: {} 
-      
+      - name: ssd0 
+        hostPath:
+          path: /grid
+      nodeSelector:
+        master: "true"  

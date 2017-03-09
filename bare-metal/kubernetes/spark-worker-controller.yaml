@@ -15,12 +15,18 @@ spec:
     spec:
       containers:
       - image: cacidocker-caciuk.azurecr.io/caci-main/spark-worker
-        name: spark-worker           
+        name: spark-worker   
+        volumeMounts:
+          - mountPath: /root/hdfs/datanode
+            name: ssd0         
         resources:
             requests:                    
-              memory: 1Gi
+              memory: 6Gi
             limits:
-              memory: 2Gi                            
+              memory: 8Gi
+        env:
+        - name: SPARK_WORKER_MEMORY
+          value: 8g                              
         ports:
         - containerPort: 7078
           hostPort: 7078
@@ -33,3 +39,7 @@ spec:
           protocol: TCP      
       imagePullSecrets:
         - name: myregistrykey
+      volumes:
+      - name: ssd0 
+        hostPath:
+          path: /grid
