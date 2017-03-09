@@ -36,7 +36,7 @@ spec:
           protocol: TCP
         - containerPort: 50020
           hostPort: 50020
-          protocol: TCP      
+          protocol: TCP
       imagePullSecrets:
         - name: myregistrykey
       volumes:
