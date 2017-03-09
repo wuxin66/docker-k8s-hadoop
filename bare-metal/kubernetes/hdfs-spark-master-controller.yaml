@@ -41,6 +41,5 @@ spec:
         - name: myregistrykey
       volumes:
       - name: ssd0 
-        emptyDir: {}
-      nodeSelector:
-        master: "true"  
+        hostPath:
+          path: /grid 
