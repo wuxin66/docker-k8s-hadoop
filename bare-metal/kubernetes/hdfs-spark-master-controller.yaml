@@ -44,4 +44,4 @@ spec:
       volumes:
       - name: ssd0 
         hostPath:
-          path: /grid 
+          path: /dev/mapper/vg_vol1-grid--lv

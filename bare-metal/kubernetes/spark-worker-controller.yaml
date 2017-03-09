@@ -41,4 +41,5 @@ spec:
         - name: myregistrykey
       volumes:
       - name: ssd0 
-        emptyDir: {}
+        hostPath:
+          path: /dev/mapper/centos-grid--lv
