@@ -23,7 +23,7 @@ spec:
             memory: 16Gi       
         volumeMounts:
           - mountPath: /root/hdfs/datanode
-            name: ssd0   
+            name: hdfs-datanode-dir    
         ports:
         - containerPort: 8080
           hostPort: 8080
@@ -42,6 +42,6 @@ spec:
       imagePullSecrets:
         - name: myregistrykey
       volumes:
-      - name: ssd0 
+      - name: hdfs-datanode-dir  
         hostPath:
           path: /grid
