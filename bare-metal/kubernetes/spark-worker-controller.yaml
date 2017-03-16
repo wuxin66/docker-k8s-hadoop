@@ -44,4 +44,4 @@ spec:
       volumes:
       - name: hdfs-datanode-dir 
         hostPath:
-          path: /grid
+          path: /grid/hdfs/
