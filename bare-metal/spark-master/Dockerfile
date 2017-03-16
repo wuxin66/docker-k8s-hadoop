@@ -9,4 +9,5 @@ EXPOSE 7078
 ENV FORMAT_HDFS false
 
 COPY run.sh /
+RUN chmod 777 /run.sh
 CMD ["/run.sh"]
