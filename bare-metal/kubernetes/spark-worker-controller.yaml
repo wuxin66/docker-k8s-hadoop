@@ -18,7 +18,7 @@ spec:
         name: spark-worker   
         volumeMounts:
           - mountPath: /root/hdfs/datanode
-            name: ssd0         
+            name: hdfs-datanode-dir
         resources:
             requests:                    
               memory: 10Gi
@@ -37,9 +37,11 @@ spec:
         - containerPort: 50020
           hostPort: 50020
           protocol: TCP
+      nodeSelector:
+        slave: "true" 
       imagePullSecrets:
         - name: myregistrykey
       volumes:
-      - name: ssd0 
+      - name: hdfs-datanode-dir 
         hostPath:
           path: /grid
