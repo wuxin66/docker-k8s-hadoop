@@ -28,18 +28,18 @@ spec:
         args: ["-c", "chmod 777 /run.sh; /run.sh"]    
         env:
           - name: FORMAT_HDFS
-            value: "true"
+            value: "false"
         ports:
-        - containerPort: 8080
+        - containerPort: 30800
           hostPort: 8080
           protocol: TCP
-        - containerPort: 7077
+        - containerPort: 30700
           hostPort: 7077
           protocol: TCP
-        - containerPort: 9000
+        - containerPort: 30900
           hostPort: 9000
           protocol: TCP
-        - containerPort: 50070
+        - containerPort: 30570
           hostPort: 50070
           protocol: TCP      
       nodeSelector:
