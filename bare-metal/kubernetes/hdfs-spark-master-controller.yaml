@@ -23,7 +23,9 @@ spec:
             memory: 16Gi       
         volumeMounts:
           - mountPath: /root/hdfs/datanode
-            name: hdfs-datanode-dir
+            name: hdfs-dir
+          - mountPath: /root/hdfs/namenode
+            name: hdfs-dir
         command: ["/bin/sh"]
         args: ["-c", "chmod 777 /run.sh; /run.sh"]    
         env:
@@ -47,6 +49,6 @@ spec:
       imagePullSecrets:
         - name: myregistrykey
       volumes:
-      - name: hdfs-datanode-dir  
+      - name: hdfs-dir  
         hostPath:
-          path: /home/dtraskas/
+          path: /grid/hdfs/
