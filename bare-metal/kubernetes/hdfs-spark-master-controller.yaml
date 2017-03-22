@@ -28,7 +28,7 @@ spec:
         args: ["-c", "chmod 777 /run.sh; /run.sh"]    
         env:
           - name: FORMAT_HDFS
-            value: "false"
+            value: "true"
         ports:
         - containerPort: 8080
           hostPort: 8080
