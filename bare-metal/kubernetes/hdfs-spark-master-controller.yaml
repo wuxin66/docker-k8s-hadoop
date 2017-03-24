@@ -28,6 +28,8 @@ spec:
             name: hdfs-dir
           - mountPath: /root/hdfs/tmp
             name: hdfs-dir
+          - mountPath: /data
+            name: data-dir
         command: ["/bin/sh"]
         args: ["-c", "chmod 777 /run.sh; /run.sh"]    
         env:
@@ -54,3 +56,6 @@ spec:
       - name: hdfs-dir  
         hostPath:
           path: /grid/hdfs/
+      - name: data-dir  
+        hostPath:
+          path: /data/
