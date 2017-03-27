@@ -75,6 +75,7 @@ RUN touch spark-env.sh
 RUN touch spark-defaults.conf
 RUN echo SPARK_WORKER_PORT=7078 >> spark-env.sh
 RUN echo spark.master spark://spark-master:7077 >> spark-defaults.conf
+RUN echo spark.sql.warehouse.dir file://root/hdfs/spark-warehouse >> spark-defaults.conf
 
 ENV PATH $PATH:$HADOOP_COMMON_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin
 

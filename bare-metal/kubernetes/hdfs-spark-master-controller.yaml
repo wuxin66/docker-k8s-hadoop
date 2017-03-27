@@ -28,6 +28,8 @@ spec:
             name: hdfs-dir
           - mountPath: /root/hdfs/tmp
             name: hdfs-dir
+          - mountPath: /root/hdfs/spark-warehouse
+            name: hdfs-dir
           - mountPath: /data
             name: data-dir
         command: ["/bin/sh"]
