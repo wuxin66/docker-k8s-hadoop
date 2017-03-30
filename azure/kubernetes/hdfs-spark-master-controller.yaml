@@ -24,6 +24,11 @@ spec:
         env:
           - name: FORMAT_HDFS
             value: "true"
+        resources:
+            requests:                 
+              memory: 1Gi
+            limits:              
+              memory: 2Gi
         ports:
         - containerPort: 8080
           hostPort: 8080
