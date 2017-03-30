@@ -20,7 +20,7 @@ spec:
           requests:   
             memory: 1Gi
           limits:
-            memory: 4Gi       
+            memory: 2Gi       
         command: ["/bin/sh"]
         args: ["-c", "chmod 777 /run.sh; /run.sh"]    
         env:
