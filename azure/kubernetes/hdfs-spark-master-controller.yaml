@@ -18,12 +18,19 @@ spec:
         name: spark-master       
         resources:
           requests:   
-            memory: 1Gi
+            memory: 10Gi
           limits:
-            memory: 2Gi       
+            memory: 16Gi       
         volumeMounts:
           - mountPath: /root/hdfs/datanode
-            name: ssd0   
+            name: hdfs-dir
+          - mountPath: /root/hdfs/namenode
+            name: hdfs-dir
+        command: ["/bin/sh"]
+        args: ["-c", "chmod 777 /run.sh; /run.sh"]    
+        env:
+          - name: FORMAT_HDFS
+            value: "true"
         ports:
         - containerPort: 8080
           hostPort: 8080
@@ -37,9 +44,12 @@ spec:
         - containerPort: 50070
           hostPort: 50070
           protocol: TCP      
+      nodeSelector:
+        master: "true"
       imagePullSecrets:
         - name: myregistrykey
       volumes:
-      - name: ssd0
-        emptyDir: {} 
+      - name: hdfs-dir
+        hostPath:
+          path: /mnt/resource/
       

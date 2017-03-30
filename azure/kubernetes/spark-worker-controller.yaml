@@ -15,12 +15,24 @@ spec:
     spec:
       containers:
       - image: cacidocker-caciuk.azurecr.io/caci-main/spark-worker
-        name: spark-worker           
+        name: spark-worker   
+        volumeMounts:
+          - mountPath: /root/hdfs/datanode
+            name: hdfs-datanode-dir
+          - mountPath: /root/hdfs/tmp
+            name: hdfs-datanode-dir
+          - mountPath: /root/hdfs/spark-warehouse
+            name: hdfs-datanode-dir
+        command: ["/bin/sh"]
+        args: ["-c", "chmod 777 /run.sh; /run.sh"]  
         resources:
             requests:                    
-              memory: 1Gi
+              memory: 10Gi
             limits:
-              memory: 2Gi                            
+              memory: 12Gi
+        env:
+        - name: SPARK_WORKER_MEMORY
+          value: 12g                              
         ports:
         - containerPort: 7078
           hostPort: 7078
@@ -30,6 +42,12 @@ spec:
           protocol: TCP
         - containerPort: 50020
           hostPort: 50020
-          protocol: TCP      
+          protocol: TCP
+      nodeSelector:
+        slave: "true" 
       imagePullSecrets:
         - name: myregistrykey
+      volumes:
+      - name: hdfs-datanode-dir 
+        hostPath:
+          path: /mnt/resource/
