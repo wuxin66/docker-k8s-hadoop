@@ -21,6 +21,9 @@ spec:
             memory: 1Gi
           limits:
             memory: 2Gi       
+        volumeMounts:
+         - mountPath: /root/hdfs/datanode
+           name: ssd0   
         command: ["/bin/sh"]
         args: ["-c", "chmod 777 /run.sh; /run.sh"]    
         env:
@@ -43,3 +46,6 @@ spec:
         master: "true"
       imagePullSecrets:
         - name: myregistrykey
+      volumes:
+        - name: ssd0
+          emptyDir: {} 
