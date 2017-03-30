@@ -18,14 +18,9 @@ spec:
         name: spark-master       
         resources:
           requests:   
-            memory: 10Gi
+            memory: 1Gi
           limits:
-            memory: 16Gi       
-        volumeMounts:
-          - mountPath: /root/hdfs/datanode
-            name: hdfs-dir
-          - mountPath: /root/hdfs/namenode
-            name: hdfs-dir
+            memory: 4Gi       
         command: ["/bin/sh"]
         args: ["-c", "chmod 777 /run.sh; /run.sh"]    
         env:
@@ -48,8 +43,3 @@ spec:
         master: "true"
       imagePullSecrets:
         - name: myregistrykey
-      volumes:
-      - name: hdfs-dir
-        hostPath:
-          path: /mnt/resource/
-      
