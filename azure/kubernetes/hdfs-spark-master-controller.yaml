@@ -16,11 +16,6 @@ spec:
       containers:
       - image: cacidocker-caciuk.azurecr.io/caci-main/spark-master
         name: spark-master       
-        resources:
-          requests:   
-            memory: 1Gi
-          limits:
-            memory: 2Gi       
         volumeMounts:
          - mountPath: /root/hdfs/datanode
            name: ssd0   
