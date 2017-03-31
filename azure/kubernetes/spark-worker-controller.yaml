@@ -14,7 +14,7 @@ spec:
         name: spark-worker
     spec:
       containers:
-      - image: cacidocker-caciuk.azurecr.io/caci-main/spark-worker:v1
+      - image: cacidocker-caciuk.azurecr.io/caci-main/spark-worker:latest
         name: spark-worker   
         volumeMounts:
           - mountPath: /root/hdfs/datanode

@@ -14,11 +14,11 @@ spec:
         name: spark-master
     spec:
       containers:
-      - image: cacidocker-caciuk.azurecr.io/caci-main/spark-master:v1
+      - image: cacidocker-caciuk.azurecr.io/caci-main/spark-master:latest
         name: spark-master       
         volumeMounts:
          - mountPath: /root/hdfs/datanode
-           name: ssd0   
+           name: hdfs-datanode-dir   
         command: ["/bin/sh"]
         args: ["-c", "rm -rf /root/hdfs/datanode/*; chmod 777 /run.sh; /run.sh"]    
         env:
@@ -45,5 +45,6 @@ spec:
       imagePullSecrets:
         - name: myregistrykey
       volumes:
-        - name: ssd0
-          emptyDir: {} 
+      - name: hdfs-datanode-dir 
+        hostPath:
+          path: /mnt/resource/
