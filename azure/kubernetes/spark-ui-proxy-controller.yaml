@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: spark-ui-proxy
-          image: cacidocker-caciuk.azurecr.io/caci-main/spark-ui-proxy:latest
+          image: cacidocker-caciuk.azurecr.io/caci-main/spark-ui-proxy:v1
           ports:
             - containerPort: 80
           resources:

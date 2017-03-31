@@ -14,7 +14,7 @@ spec:
         name: spark-master
     spec:
       containers:
-      - image: cacidocker-caciuk.azurecr.io/caci-main/spark-master
+      - image: cacidocker-caciuk.azurecr.io/caci-main/spark-master:v1
         name: spark-master       
         volumeMounts:
          - mountPath: /root/hdfs/datanode
