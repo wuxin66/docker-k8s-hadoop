@@ -19,11 +19,6 @@ spec:
         volumeMounts:
          - mountPath: /root/hdfs/datanode
            name: hdfs-datanode-dir   
-        command: ["/bin/sh"]
-        args: ["-c", "rm -rf /root/hdfs/datanode/*; chmod 777 /run.sh; /run.sh"]    
-        env:
-          - name: FORMAT_HDFS
-            value: "true"
         resources:
             requests:                 
               memory: 1Gi
