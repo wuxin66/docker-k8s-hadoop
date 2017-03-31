@@ -18,11 +18,7 @@ spec:
         name: spark-worker   
         volumeMounts:
           - mountPath: /root/hdfs/datanode
-            name: hdfs-datanode-dir
-          - mountPath: /root/hdfs/tmp
-            name: hdfs-datanode-dir
-          - mountPath: /root/hdfs/spark-warehouse
-            name: hdfs-datanode-dir
+            name: hdfs-datanode-dir          
         command: ["/bin/sh"]
         args: ["-c", "chmod 777 /run.sh; /run.sh"]  
         resources:
