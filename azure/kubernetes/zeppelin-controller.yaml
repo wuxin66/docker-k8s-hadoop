@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: zeppelin
-          image: cacidocker-caciuk.azurecr.io/caci-main/zeppelin:v1
+          image: cacidocker-caciuk.azurecr.io/caci-main/zeppelin:latest
           ports:
             - containerPort: 8080  
           resources:
