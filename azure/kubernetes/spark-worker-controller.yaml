@@ -22,7 +22,7 @@ spec:
           - mountPath: /data
             name: hdfs-datanode-dir          
         command: ["/bin/sh"]
-        args: ["-c", "chmod 777 /run.sh; /run.sh"]  
+        args: ["-c", "rm -rf /root/hdfs/datanode/*; chmod 777 /run.sh; /run.sh"]  
         resources:
             requests:                    
               memory: 10Gi
