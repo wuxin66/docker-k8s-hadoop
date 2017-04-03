@@ -37,6 +37,8 @@ spec:
         - containerPort: 50070
           hostPort: 50070
           protocol: TCP      
+      nodeSelector:
+        master: "true" 
       imagePullSecrets:
         - name: myregistrykey
       volumes:

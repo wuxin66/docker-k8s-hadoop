@@ -19,8 +19,6 @@ spec:
         volumeMounts:
           - mountPath: /root/hdfs/datanode
             name: hdfs-datanode-dir          
-          - mountPath: /data
-            name: hdfs-datanode-dir          
         resources:
             requests:                    
               memory: 10Gi
