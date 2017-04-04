@@ -42,6 +42,4 @@ spec:
       volumes:
       - name: hdfs-datanode-dir 
         hostPath:
-          path: /mnt/resource/
-      nodeSelector:
-        sparkmaster: "true"
+          path: /mnt/resource/      

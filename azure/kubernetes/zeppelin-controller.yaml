@@ -22,6 +22,4 @@ spec:
             limits:              
               memory: 2Gi                  
       imagePullSecrets:
-        - name: myregistrykey
-      nodeSelector:
-        sparkmaster: "true"
+        - name: myregistrykey      
