@@ -21,9 +21,9 @@ spec:
            name: hdfs-datanode-dir   
         resources:
             requests:                 
-              memory: 1Gi
+              memory: 4Gi
             limits:              
-              memory: 2Gi
+              memory: 5Gi
         ports:
         - containerPort: 8080
           hostPort: 8080
@@ -43,3 +43,5 @@ spec:
       - name: hdfs-datanode-dir 
         hostPath:
           path: /mnt/resource/
+      nodeSelector:
+        master: "true"
