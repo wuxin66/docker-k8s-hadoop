@@ -22,6 +22,4 @@ spec:
             limits:              
               memory: 2Gi    
       nodeSelector:
-        master: "true"        
-      imagePullSecrets:
-        - name: myregistrykey
+        master: "true"

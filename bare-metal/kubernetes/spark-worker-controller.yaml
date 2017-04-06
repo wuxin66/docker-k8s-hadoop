@@ -45,8 +45,6 @@ spec:
           protocol: TCP
       nodeSelector:
         slave: "true" 
-      imagePullSecrets:
-        - name: myregistrykey
       volumes:
       - name: hdfs-datanode-dir 
         hostPath:

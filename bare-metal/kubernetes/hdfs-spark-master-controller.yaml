@@ -52,8 +52,6 @@ spec:
           protocol: TCP      
       nodeSelector:
         master: "true"
-      imagePullSecrets:
-        - name: myregistrykey
       volumes:
       - name: hdfs-dir  
         hostPath:
