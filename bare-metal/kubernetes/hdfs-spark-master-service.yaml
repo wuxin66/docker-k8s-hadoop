@@ -23,5 +23,8 @@ spec:
   - name: dfshealth
     port: 50070
     targetPort: 50070
+  - name: dashboard
+    port: 5234
+    targetPort: 5234
   selector:
-    name: spark-master  
+    name: spark-master
