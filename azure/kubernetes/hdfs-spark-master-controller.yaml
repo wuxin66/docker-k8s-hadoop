@@ -16,14 +16,14 @@ spec:
       containers:
       - image: cacidocker-caciuk.azurecr.io/caci-main/spark-master
         name: spark-master       
-        resources:
-          requests:   
-            memory: 1Gi
-          limits:
-            memory: 2Gi       
         volumeMounts:
-          - mountPath: /root/hdfs/datanode
-            name: ssd0   
+         - mountPath: /root/hdfs/datanode
+           name: hdfs-datanode-dir   
+        resources:
+            requests:                 
+              memory: 2Gi
+            limits:              
+              memory: 4Gi
         ports:
         - containerPort: 8080
           hostPort: 8080
@@ -36,10 +36,10 @@ spec:
           protocol: TCP
         - containerPort: 50070
           hostPort: 50070
-          protocol: TCP      
+          protocol: TCP            
       imagePullSecrets:
         - name: myregistrykey
       volumes:
-      - name: ssd0
-        emptyDir: {} 
-      
+      - name: hdfs-datanode-dir 
+        hostPath:
+          path: /mnt/resource/      
