@@ -14,7 +14,7 @@ spec:
         name: spark-master
     spec:
       containers:
-      - image: gcr.io/caci-main/spark-master:latest
+      - image: cacidocker-caciuk.azurecr.io/caci-main/spark-master
         name: spark-master       
         resources:
           requests:   
@@ -52,6 +52,8 @@ spec:
           protocol: TCP      
       nodeSelector:
         master: "true"
+      imagePullSecrets:
+        - name: myregistrykey
       volumes:
       - name: hdfs-dir  
         hostPath:

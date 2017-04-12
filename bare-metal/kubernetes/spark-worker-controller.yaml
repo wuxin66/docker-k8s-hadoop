@@ -14,7 +14,7 @@ spec:
         name: spark-worker
     spec:
       containers:
-      - image: gcr.io/caci-main/spark-worker:latest
+      - image: cacidocker-caciuk.azurecr.io/caci-main/spark-worker
         name: spark-worker   
         volumeMounts:
           - mountPath: /root/hdfs/datanode
@@ -45,6 +45,8 @@ spec:
           protocol: TCP
       nodeSelector:
         slave: "true" 
+      imagePullSecrets:
+        - name: myregistrykey
       volumes:
       - name: hdfs-datanode-dir 
         hostPath:
