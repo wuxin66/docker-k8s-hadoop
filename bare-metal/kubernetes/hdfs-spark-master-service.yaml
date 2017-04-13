@@ -10,21 +10,18 @@ spec:
     # the port that this service should serve on
   - name: webui
     port: 8080
-    targetPort: 30080
+    targetPort: 8080
   - name: spark
     port: 7077
-    targetPort: 30077
+    targetPort: 7077
   - name: driverui
     port: 4040
-    targetPort: 30040
+    targetPort: 4040
   - name: hdfs
     port: 9000
-    targetPort: 30090
+    targetPort: 9000
   - name: dfshealth
     port: 50070
-    targetPort: 30070
-  - name: dashboard
-    port: 5234
-    targetPort: 30052
+    targetPort: 50070
   selector:
     name: spark-master
