@@ -33,10 +33,10 @@ spec:
           - mountPath: /data
             name: data-dir
         command: ["/bin/sh"]
-        args: ["-c", "chmod 777 /run.sh; /run.sh"]    
+        args: ["-c", "rm -rf /root/hdfs/namenode/*; rm -rf /root/hdfs/datanode/*; rm -rf /root/hdfs/tmp/*; rm -rf /root/hdfs/spark-warehouse/*; chmod 777 /run.sh; /run.sh"]    
         env:
           - name: FORMAT_HDFS
-            value: "false"
+            value: "true"
         ports:
         - containerPort: 8080
           hostPort: 8080
