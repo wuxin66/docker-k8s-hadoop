@@ -52,7 +52,7 @@ spec:
           - --error-target
           - http://127.0.0.1:8081/hub/error
       - name: jupyterhub
-        image: danielfrg/jupyterhub-kube-github-nfs:0.1
+        image: cacidocker-caciuk.azurecr.io/caci-main/jupyterhub:0.1
         ports:
           - containerPort: 8081
         volumeMounts:
