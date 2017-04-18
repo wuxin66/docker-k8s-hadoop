@@ -24,7 +24,8 @@ spec:
           - mountPath: /root/hdfs/spark-warehouse
             name: hdfs-datanode-dir
         command: ["/bin/sh"]
-        args: ["-c", "rm -rf /root/hdfs/namenode/*; rm -rf /root/hdfs/datanode/*; rm -rf /root/hdfs/spark-warehouse/*; chmod 777 /run.sh; /run.sh"]  
+        #args: ["-c", "rm -rf /root/hdfs/namenode/*; rm -rf /root/hdfs/datanode/*; rm -rf /root/hdfs/spark-warehouse/*; chmod 777 /run.sh; /run.sh"]  
+        args: ["-c", "chmod 777 /run.sh; /run.sh"]  
         resources:
             requests:                    
               memory: 10Gi
