@@ -8,7 +8,7 @@ data:
     import os
     c.JupyterHub.spawner_class = 'kubespawner.KubeSpawner'
 
-    c.JupyterHub.ip = '0.0.0.0'
+    c.JupyterHub.ip = '127.0.0.1'
     c.JupyterHub.hub_ip = '0.0.0.0'
     c.JupyterHub.cleanup_servers = False
     c.KubeSpawner.start_timeout = 60 * 5 
