@@ -52,7 +52,7 @@ spec:
           - --error-target
           - http://127.0.0.1:8081/hub/error
       - name: jupyterhub
-        image: cacidocker-caciuk.azurecr.io/caci-main/jupyterhub:0.1
+        image: cacidocker-caciuk.azurecr.io/caci-main/jupyterhub:latest
         ports:
           - containerPort: 8081
         volumeMounts:
