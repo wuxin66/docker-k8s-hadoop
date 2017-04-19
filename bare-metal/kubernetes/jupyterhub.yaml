@@ -32,12 +32,6 @@ spec:
       containers:
       - name: proxy
         image: jupyterhub/configurable-http-proxy
-        env:
-          - name: CONFIGPROXY_AUTH_TOKEN
-            valueFrom:
-              secretKeyRef:
-                key: configproxy-auth-token
-                name: jupyterhub-secrets
         ports:
           - containerPort: 8000
           - containerPort: 8001
