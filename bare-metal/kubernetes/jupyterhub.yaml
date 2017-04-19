@@ -52,6 +52,8 @@ spec:
         volumeMounts:
           - name: config-volume
             mountPath: "/srv/jupyterhub/"
+      imagePullSecrets:
+        - name: myregistrykey
       volumes:
         - name: config-volume
           configMap:
